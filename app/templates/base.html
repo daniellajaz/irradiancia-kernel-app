@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Atlas de irradiancia de Nariño{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/leaflet.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="sun" aria-hidden="true"></div>
+      <div>
+        <h1>Atlas de irradiancia de Nariño</h1>
+        <small>Daniela Jazmin Toro- Zonas de irradiancia con pipelines kernel sobre Landsat y MODIS</small>
+      </div>
+    </div>
+    <nav aria-label="Secciones">
+      <a href="{{ url_for('compare_page') }}" {% if page == 'compare' %}aria-current="page"{% endif %}>Comparar modelos</a>
+      <a href="{{ url_for('models_page') }}" {% if page == 'models' %}aria-current="page"{% endif %}>Modelos guardados</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

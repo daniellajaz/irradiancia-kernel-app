@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">Elige dos modelos guardados. Los mapas muestran la zona de irradiancia que predice cada uno;
+haz clic en cualquier punto para ver su clasificación en ambos modelos.</p>
+
+<div class="pickers">
+  <label class="picker a"><span class="tag">A</span><select id="selA" aria-label="Modelo A"></select></label>
+  <label class="picker b"><span class="tag">B</span><select id="selB" aria-label="Modelo B"></select></label>
+</div>
+
+<div class="maps">
+  <div class="mapbox a"><div class="maptitle" id="titleA"></div><div id="mapA" class="map"></div></div>
+  <div class="mapbox b"><div class="maptitle" id="titleB"></div><div id="mapB" class="map"></div></div>
+</div>
+<p class="hint">Los mapas se mueven juntos. Los puntos pequeños son las observaciones reales del satélite de cada modelo
+(actívalos o desactívalos con el control de capas).</p>
+
+<section class="ruler" aria-label="Cortes de zona sobre la escala de irradiancia">
+  <div class="ruler-track" id="ruler"></div>
+  <div class="ruler-ticks" id="rulerTicks"></div>
+  <p class="caption">Escala compartida de irradiancia (unidades del dataset). Arriba, los rangos de cada zona del modelo A;
+  abajo, los del modelo B. El color del mapa es el punto medio del rango de la zona.</p>
+</section>
+
+<div class="grid-2">
+  <section class="panel" aria-live="polite">
+    <h2>Punto seleccionado</h2>
+    <div id="pointInfo"><p class="empty">Haz clic en el mapa para clasificar un punto.</p></div>
+  </section>
+  <section class="panel">
+    <h2>Métricas de calidad</h2>
+    <div class="table-scroll"><table id="metricsTable"></table></div>
+    <canvas id="metricsChart" height="170" aria-label="Gráfico de métricas"></canvas>
+    <p class="caption">Validación cruzada: 5 pliegues × 2 repeticiones sobre el 80 % de entrenamiento.
+    Holdout: 20 % reservado que ningún modelo vio al ajustarse.</p>
+  </section>
+</div>
+
+<div class="grid-3">
+  <section class="panel"><h2><span class="dot a"></span>Matriz de confusión A</h2><div id="cmA"></div></section>
+  <section class="panel"><h2><span class="dot b"></span>Matriz de confusión B</h2><div id="cmB"></div></section>
+  <section class="panel">
+    <h2>Dónde discrepan</h2>
+    <div id="diffmap"></div>
+    <p class="caption">Rojo: B asigna una zona de mayor irradiancia que A. Azul: menor. Blanco: coinciden.</p>
+    <div id="agreement"></div>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/leaflet.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='compare.js') }}"></script>
+{% endblock %}

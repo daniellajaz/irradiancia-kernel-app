@@ -1,0 +1,109 @@
+{
+ "modis|standard|dbscan|lda|kann|rbf": {
+  "params": {
+   "hidden_layer_sizes": [
+    50
+   ],
+   "bandwidth": 0.7,
+   "alpha": 0.1,
+   "activation": "tanh"
+  },
+  "search_score": 0.7873557718203522
+ },
+ "modis|standard|dbscan|lda|kann|poly": {
+  "params": {
+   "hidden_layer_sizes": [
+    100
+   ],
+   "bandwidth": 4.0,
+   "alpha": 0.001,
+   "activation": "tanh"
+  },
+  "search_score": 0.7924564761495081
+ },
+ "modis|standard|dbscan|lda|ksvc|rquadratic": {
+  "params": {
+   "class_weight": "balanced",
+   "bandwidth": 0.5,
+   "C": 10000.0
+  },
+  "search_score": 0.7768626860083254
+ },
+ "modis|standard|dbscan|lda|ksvc|truncated": {
+  "params": {
+   "class_weight": "balanced",
+   "bandwidth": 2.8,
+   "C": 10.0
+  },
+  "search_score": 0.7787515495056547
+ },
+ "modis|standard|dbscan|lda|kridge|linear": {
+  "params": {
+   "class_weight": null,
+   "alpha": 31.622776601683793
+  },
+  "search_score": 0.7761859280699233
+ },
+ "modis|standard|dbscan|lda|kridge|poly": {
+  "params": {
+   "class_weight": null,
+   "bandwidth": 2.8,
+   "alpha": 31.622776601683793
+  },
+  "search_score": 0.7800139033372815
+ },
+ "landsat|normalizer|hierarchical|lda|ksvc|triangle": {
+  "params": {
+   "class_weight": null,
+   "bandwidth": 0.7,
+   "C": 3.1622776601683795
+  },
+  "search_score": 0.693326522868168
+ },
+ "landsat|minmax|hierarchical|lda|ksvc|rbf": {
+  "params": {
+   "class_weight": null,
+   "bandwidth": 2.8,
+   "C": 100.0
+  },
+  "search_score": 0.7141182836800226
+ },
+ "landsat|standard|hierarchical|lda|kridge|rbf": {
+  "params": {
+   "class_weight": null,
+   "bandwidth": 0.7,
+   "alpha": 3.1622776601683795
+  },
+  "search_score": 0.7101733166777849
+ },
+ "landsat|normalizer|hierarchical|lda|kridge|rquadratic": {
+  "params": {
+   "class_weight": "balanced",
+   "bandwidth": 1.0,
+   "alpha": 0.03162277660168379
+  },
+  "search_score": 0.7074970165987262
+ },
+ "landsat|normalizer|hierarchical|lda|kann|rquadratic": {
+  "params": {
+   "hidden_layer_sizes": [
+    50
+   ],
+   "bandwidth": 0.7,
+   "alpha": 0.1,
+   "activation": "tanh"
+  },
+  "search_score": 0.692235399997146
+ },
+ "landsat|normalizer|hierarchical|lda|kann|triangle": {
+  "params": {
+   "hidden_layer_sizes": [
+    25
+   ],
+   "bandwidth": 0.7,
+   "alpha": 0.1,
+   "activation": "tanh"
+  },
+  "search_score": 0.7140435493775614
+ }
+}

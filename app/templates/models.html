@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">Aquí se guardan los pipelines. Los que exporta el notebook aparecen automáticamente; también puedes
+entrenar uno nuevo con el mismo protocolo de evaluación (misma partición 80/20 y validación cruzada) y quedará almacenado.</p>
+
+<section class="panel">
+  <h2>Entrenar y guardar un pipeline</h2>
+  <form id="trainForm">
+    <div class="form-grid">
+      {% for field, label in [('dataset','Satélite'),('scaler','Escalador'),('discretizer','Discretizador'),('reducer','Reductor'),('model','Modelo'),('kernel','Kernel')] %}
+      <label>{{ label }}
+        <select name="{{ field }}">
+          {% for key, text in choices[field].items() %}<option value="{{ key }}">{{ text }}</option>{% endfor %}
+        </select>
+      </label>
+      {% endfor %}
+      <label>C (solo KSVC)<input name="C" type="number" step="any" min="0" placeholder="10"></label>
+      <label>alpha (KRidge / KANN)<input name="alpha" type="number" step="any" min="0" placeholder="por defecto"></label>
+      <label>Ancho de banda<input name="bandwidth" type="number" step="any" min="0" placeholder="1 (mediana)"></label>
+    </div>
+    <div class="actions">
+      <button type="submit" id="trainBtn">Entrenar y guardar</button>
+      <span class="status" id="trainStatus" role="status"></span>
+    </div>
+  </form>
+</section>
+
+<section class="panel" style="margin-top:1.25rem">
+  <h2>Modelos guardados</h2>
+  <div class="table-scroll"><table id="modelsTable"></table></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='models.js') }}"></script>{% endblock %}

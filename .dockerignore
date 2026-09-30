@@ -1,0 +1,7 @@
+.git
+.venv
+venv
+notebooks
+results
+**/__pycache__
+models/registry.db
